@@ -8,7 +8,7 @@ export async function POST(req) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        api_key: "Spb5qaun9AWY41J5Wovh",
+        api_key: process.env.ROBOFLOW_API_KEY,
         inputs: {
           image: {
             type: "base64",
