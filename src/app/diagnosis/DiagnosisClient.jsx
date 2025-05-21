@@ -93,7 +93,7 @@ const handleClinicClick = () => {
         </div>)
     } else if(loading === "error") {
         content = (<div style={{ overflowX: 'hidden', overflowY: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
-            <div className="error">sum went wrong gang ts cooked 😭🙏💔💔💔💔💔</div>
+            <div className="error">The CV Model was not confident of any classifications regarding your image. It is likely an unclear image, or a disease that is not one of the 8 skin diseases the model accounts for.</div>
         </div>)
     } else {
         content = (<div style={{overflowX: 'hidden', overflowY: 'hidden'}}>
