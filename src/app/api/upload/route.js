@@ -21,6 +21,7 @@ export async function POST(req) {
     const result = await response.json();
 
     const prediction = result?.outputs?.[0]?.model_predictions;
+    console.log(result);
 
     if (!prediction) {
       return Response.json({ message: "No prediction returned" }, { status: 500 });

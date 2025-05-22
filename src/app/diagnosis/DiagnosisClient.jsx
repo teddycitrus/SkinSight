@@ -92,8 +92,8 @@ const handleClinicClick = () => {
             </div>
         </div>)
     } else if(loading === "error") {
-        content = (<div style={{ overflowX: 'hidden', overflowY: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
-            <div className="error">The CV Model was not confident of any classifications regarding your image. It is likely an unclear image, or a disease that is not one of the 8 skin diseases the model accounts for.</div>
+        content = (<div style={{ overflowX: 'hidden', overflowY: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh', width: '90vh', textAlign: 'center' }}>
+            <p>The CV Model was not confident of any classifications regarding your image. It is likely an unclear image, or a disease that is not one of the 8 skin diseases the model accounts for. There might also be an error regarding the OpenAI API. Please check status of the key and request.</p>
         </div>)
     } else {
         content = (<div style={{overflowX: 'hidden', overflowY: 'hidden'}}>
