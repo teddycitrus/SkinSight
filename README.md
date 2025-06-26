@@ -1,6 +1,6 @@
 # SkinSight
 
-SkinSight is an AI-powered web application that allows users to diagnose common skin diseases by simply uploading an image. The app delivers instant, personalized results with background information and actionable next steps—including nearby medical help—using cutting-edge AI tools.
+SkinSight is an AI-powered web application that allows users to diagnose common skin diseases by simply uploading an image. The app delivers instant, personalized results with background information and actionable next steps—including nearby medical help—using cutting-edge AI tools. It is cheaper and more accurate than feeding the image directly to ChatGPT (a release compatible with image input, reasoning, etc.)
 
 ## 🧠 Tech Stack
 
@@ -22,7 +22,7 @@ SkinSight is an AI-powered web application that allows users to diagnose common 
 1. **User uploads an image**
 2. **Roboflow model** analyzes and classifies the skin condition
 3. **GPT-4.1-nano** explains the condition and recommends treatment/prevention
-4. **Nearby clinics** and relevant medications are suggested (via 3rd party APIs or static dataset)
+4. **Nearby clinics** and relevant medications are suggested (via concatenation of query parameters onto google maps/amazon links)
 
 ## 📦 Installation
 
@@ -35,9 +35,8 @@ npm install
 Create a `.env.local` file with:
 
 ```
-ROBOFLOW_API_KEY=your-roboflow-key
+ROBOFLOW_API_KEY=your-roboflow-key (Roboflow Hosted API)
 OPENAI_API_KEY=your-openai-key
-NEXT_PUBLIC_MAPS_API_KEY=optional-if-using-maps
 ```
 
 Then run:
@@ -51,21 +50,18 @@ Visit `http://localhost:3000` to test it locally.
 ## 📂 Project Structure
 
 ```
-/pages
-  └── index.tsx             # Upload + Result UI
-  └── api/
-       └── diagnose.ts      # Roboflow + GPT integration
-
-/components
-  └── UploadForm.tsx
-  └── ResultCard.tsx
-
-/lib
-  └── openai.ts
-  └── roboflow.ts
+/src
+  └── /app
+        └── page.js   (Home page)
+        └── layout.js
+        └── upload.js (camera + photo upload functionality)
+        └── diagnosis.js (results, additional information, links/next steps)
+        └── /api  (Node.js API routes)
+              └── upload.js
+              └── diagnosis.js
 ```
 
-## 🤖 AI Model Info
+## 🤖 AI Content
 
 * **Roboflow**: Trained on 8000+ labeled dermatological images across 8+ common conditions
 * **OpenAI**: GPT-4.1-nano used to generate accessible medical summaries and advice
